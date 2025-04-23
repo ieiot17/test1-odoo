@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_progen_cjm_researcher,access.progen.cjm.researcher,model_progen_cjm,progen.progen_researcher,1,1,1,0
+access_progen_cjm_rm,access.progen.cjm.rm,model_progen_cjm,progen.progen_rm,1,1,1,1
+access_progen_cjm_reviewer,access.progen.cjm.reviewer,model_progen_cjm,progen.progen_reviewer,1,1,0,0
+access_progen_cjm_crm,access.progen.cjm.crm,model_progen_cjm,progen.progen_crm,1,1,0,0
+access_progen_cjm_user,access.progen.cjm.user,model_progen_cjm,base.group_user,1,0,0,0

@@ -1,0 +1,16 @@
+<odoo>
+    <record id="view_partner_property_customization" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.property.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="account.view_partner_property_form"/>
+        <field name="priority" eval="20"/>       
+        <field name="arch" type="xml">
+
+        <xpath expr="//group[@name='accounting_automation']" position="replace"/> 
+        <xpath expr="//group[@name='banks']" position="replace"/> 
+        <xpath expr="//group[@name='fiscal_information']" position="replace"/> 
+        
+
+     </field>
+    </record>
+</odoo>

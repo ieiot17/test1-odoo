@@ -1,0 +1,48 @@
+<odoo>
+  <data>
+
+    <record id="view_hr_employee_form_custom" model="ir.ui.view">
+      <field name="name">hr.employee.form.inherit.custom</field>
+      <field name="model">hr.employee</field>
+      <field name="inherit_id" ref="hr.view_employee_form"/>
+      <field name="priority" eval="45"/>
+      <field name="arch" type="xml">
+
+          <xpath expr="//field[@name='coach_id']" position="replace">
+            <field name="start_date"/>
+            <field name="end_date"/>
+            
+          </xpath>
+          <xpath expr="//field[@name='category_ids']" position="replace"/>
+          <xpath expr="//field[@name='mobile_phone']" position="replace"/>
+          <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='company_id']" position="replace">
+            <field name="exempt"/>
+            <field name="user_active"/>
+            <field name="status_board" string="Status Board"/>
+          </xpath>
+          <xpath expr="//page[@name='personal_information']" position="replace"/>
+          <xpath expr="//page[@name='skills_resume']" position="replace"/>
+          <xpath expr="//field[@name='department_id']" position="attributes">
+            <attribute name="string">Team</attribute>
+          </xpath>
+          <xpath expr="//group[@name='managers']" position="replace"/>
+          <xpath expr="//field[@name='resource_calendar_id']" position="after">
+            <field name="wk_progen_hrs" options="{&quot;digits&quot;:[0,0]}"/>
+          </xpath>
+          <xpath expr="//field[@name='employee_type']" position="after">
+            <field name="employee_type"/>
+          </xpath>
+          <xpath expr="//field[@name='employee_type']" position="replace"/>
+          <xpath expr="//field[@name='job_id']" position="attributes">
+            <attribute name="string">Professional Type</attribute>
+          </xpath>
+          <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='hr_settings']/group[1]/group[@name='application_group']/div[@name='hourly_cost']" position="after">
+              <field name="cost_center_code"/>
+          </xpath>
+
+
+      </field>
+    </record>
+
+  </data>
+</odoo>

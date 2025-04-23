@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Custom timesheet view extension -->
+<odoo>
+    <record id="view_account_analytic_line_list_custom_time" model="ir.ui.view">
+        <field name="name">account.analytic.line.list.time.fields</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree" />
+        <field name="priority" eval="45"/>
+        <field name="arch" type="xml">
+
+            <data>
+                <xpath expr="//field[@name='task_id']" position="attributes">
+                <attribute name="domain">[("remaining_hours", "!=", 0)]</attribute>
+            </xpath>
+                <xpath expr="//list[1]/field[@name='name']" position="after">
+                    <field name="start_time" string="Start Time"/>
+                    <field name="end_time" string="End Time"/>
+                </xpath>
+            </data>
+
+        </field>
+    </record>
+</odoo>

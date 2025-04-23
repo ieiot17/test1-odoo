@@ -1,0 +1,24 @@
+<odoo>
+    <record id="view_partner_form_customized" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.customer.profile</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>        
+        <field name="priority" eval="45"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+            <page string="Admin Information">
+                <group>
+                    <field name="salesforce_account_id" string="Salesforce Account Id"/>
+                    <field name="starting_balance" string="Starting Balance"/>
+                </group>
+            </page>
+        </xpath>
+        <xpath expr="//field[@name='function']" position="replace">
+            <field name="status" string="Account Status"/>
+        </xpath>
+        <xpath expr="//group[@name='misc']" position="replace"/> 
+        <xpath expr="//group[@name='inventory']" position="replace"/> 
+
+     </field>
+    </record>
+</odoo>
