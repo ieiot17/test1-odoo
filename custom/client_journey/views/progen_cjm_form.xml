@@ -1,0 +1,69 @@
+<odoo>
+    <record id="view_progen_cjm_form" model="ir.ui.view">
+        <field name="name">progen.cjm.form</field>
+        <field name="model">progen.cjm</field>
+        <field name="arch" type="xml">
+            <form string="Progen CJM">
+                <header>
+                    <field widget="statusbar" name="progen_cj_state" options="{'clickable': false}"/>
+                    <button name="action_submit_review" type="object" string="Submit" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="progen_cj_description"/>
+                        </group>
+                        <group>
+                            <field name="progen_cj_planwriter" required="1" readonly="progen_cj_planwriter" force_save="1"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <group>
+                            <field name="file_upload_rp"/>
+                            <field name="progen_reviewer_id" groups="progen.progen_rm" force_save="1" readonly="progen_cj_state in ['client_ready']"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <group>
+                            <field name="ready_for_review" widget="boolean_toggle" invisible="progen_cj_state == 'submitted'"/>
+                            <field name="general_plan_format" invisible="progen_cj_state != 'submitted'" placeholder="20 points"/>
+                            <field name="review_client_info" invisible="progen_cj_state != 'submitted'" placeholder="30 points"/>
+                            <field name="resource_identified" invisible="progen_cj_state != 'submitted'" placeholder="20 points"/>
+                            <field name="execution" invisible="progen_cj_state != 'submitted'" placeholder="30 points"/>
+                            <field name="scorecard_total" readonly="1" invisible="progen_cj_state != 'submitted'"/>
+                        </group>
+                        <group>
+                            <field name="progen_review_status"
+                                force_save="1"
+                                readonly = "progen_review_status != False and progen_cj_state!='submitted'"
+                                invisible = "(progen_cj_state != 'submitted')"/>
+                        </group>
+
+                    </group>
+
+                    <group>
+                        <field name="progen_cj_notes"/>
+                    </group>
+
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_progen_cjm_list" model="ir.ui.view">
+        <field name="name">progen.cjm.list</field>
+        <field name="model">progen.cjm</field>
+        <field name="arch" type="xml">
+            <list string="Progen CJM">
+                <field name="name"/>
+                <field name="progen_cj_state"/>
+                <field name="scorecard_total"/>
+                <field name="ready_for_review"/>
+            </list>
+        </field>
+    </record>
+</odoo>

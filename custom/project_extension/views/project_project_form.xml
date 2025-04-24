@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Custom timesheet view extension -->
+<odoo>
+    <record id="view_project_project_form_custom_time" model="ir.ui.view">
+        <field name="name">project.project.form.customization</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="hr_timesheet.project_invoice_form" />
+        <field name="priority" eval="45"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='tag_ids']" position="replace">
+                <field name="session_rate" placeholder="$ per hour" help="$ per hour"/>
+                <field name="session_budget" widget="monetary" options="{&quot;currency_field&quot;:&quot;currency_id&quot;}"/>
+            </xpath>
+            <xpath expr="//field[@name='allocated_hours']" position="after">
+                <field name="remaining_session" widget="monetary" options="{&quot;currency_field&quot;:&quot;currency_id&quot;}"/>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Custom timesheet view extension -->
+<odoo>
+    <record id="view_project_task_form_custom_time" model="ir.ui.view">
+        <field name="name">project.task.form.customization</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2" />
+        <field name="priority" eval="45"/>
+        <field name="arch" type="xml">
+
+            <!-- Restrict access to the date field 
+            <xpath expr="//field[@name='date']" position="attributes">
+                <attribute name="groups">
+                    __export__.res_groups_39_5618ea89,__export__.res_groups_47_f30034b8
+                </attribute>
+            </xpath>-->
+
+            <!-- Insert start and end time fields after the date field -->
+
+            <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='tag_ids']" position="after">
+                <field name="task_budget"/>
+            </xpath>
+            <xpath expr="//form[1]/sheet[1]/group[1]/group[2]/div[not(@name)][2]" position="after">
+                <field name="task_remaining_budget" string="Task Remaining ($)"/>
+            </xpath>
+            <xpath expr="//field[@name='timesheet_ids']" position="attributes">
+                <attribute name="force_save">1</attribute>
+                <attribute name="readonly">not analytic_account_active or is_timeoff_task or remaining_hours == 0</attribute>
+            </xpath>
+            <xpath expr="//form[1]/sheet[1]/notebook[1]/page[@name='page_timesheets']/field[@name='timesheet_ids']/list[1]/field[@name='name']" position="after">
+                <field optional="show" name="start_time" string="Start Time"/>
+                <field optional="show" name="end_time" string="End Time"/>
+            </xpath>
+            <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='tag_ids']" position="after">
+                <field name="task_timesheet"/>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>
