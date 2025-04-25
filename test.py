@@ -3,7 +3,7 @@ import traceback
 
 #Use the secret password from the credentials file
 #with open("./credentials", "r") as file:
-password = "8d6c4983d9dacbed55eca3f6361f5cbbe3b13cf8"
+password = ""
 
 # 🔹 Odoo Server Configuration
 url = "http://192.168.56.105:8039/"  #Odoo server URL
